@@ -1,5 +1,0 @@
-FluBorder {
-    background-color: [[BackGroundColor]];
-    border: [[BorderWith]] solid [[BorderColor]];
-    border-radius: 4px;
-}

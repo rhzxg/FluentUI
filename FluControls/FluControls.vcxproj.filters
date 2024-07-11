@@ -365,27 +365,6 @@
     <ClCompile Include="FluCircleDot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FluTeachingTip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluWindowKitWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluWindowkitButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluWindowKitTitleBar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluTimeLine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluTimeLineItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FluTimeLineIcon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FluPushButton.h">
@@ -721,24 +700,6 @@
     <QtMoc Include="FluCircleDot.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="FluTeachingTip.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FluWindowkitButton.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FluWindowKitTitleBar.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FluTimeLine.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FluTimeLineItem.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FluTimeLineIcon.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluFlowLayout.h">
@@ -754,9 +715,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FluCalendarSelectYearView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FluWindowKitWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

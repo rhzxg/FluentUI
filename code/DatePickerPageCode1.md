@@ -1,1 +1,0 @@
-auto datePicker = new FluDatePicker;

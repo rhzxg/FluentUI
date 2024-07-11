@@ -20,6 +20,8 @@ qt_add_library(${TGT}
     ${DIR_SRCS}
 )
 
+set_property(TARGET ${TGT} PROPERTY FOLDER "FluentUI")
+
 target_link_libraries(${TGT}
     PUBLIC
     Qt6::Widgets

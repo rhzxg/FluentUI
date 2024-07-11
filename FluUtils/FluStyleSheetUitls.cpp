@@ -1,4 +1,5 @@
 #include "FluStyleSheetUitls.h"
+#include <QDir>
 
 FluStyleSheetUitls *FluStyleSheetUitls::m_styleSheetUtils = nullptr;
 FluStyleSheetUitls::FluStyleSheetUitls(QObject *object /*= nullptr*/) : QObject(object)
@@ -11,7 +12,7 @@ FluStyleSheetUitls::FluStyleSheetUitls(QObject *object /*= nullptr*/) : QObject(
 
 QString FluStyleSheetUitls::getQssByFileName(const QString &fileName)
 {
-    QFile file(fileName);
+    QFile file(QDir::currentPath() + fileName);
     if (file.open(QIODevice::ReadOnly))
     {
         QString qssStr = file.readAll();

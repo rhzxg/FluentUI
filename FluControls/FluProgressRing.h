@@ -9,7 +9,7 @@ class FluProgressRing : public FluWidget
 {
     Q_OBJECT
   public:
-    FluProgressRing(QWidget* parent = nullptr) : FluWidget(parent), m_bTransparentTrack(false)
+    FluProgressRing(QWidget* parent = nullptr) : FluWidget(parent)
     {
         m_minValue = 0;
         m_maxValue = 100;
@@ -46,14 +46,9 @@ class FluProgressRing : public FluWidget
 
         QPen pen;
         pen.setWidth(6);
-        pen.setCapStyle(Qt::RoundCap);
-        pen.setJoinStyle(Qt::RoundJoin);
         pen.setColor(QColor(211, 211, 211));
         if (FluThemeUtils::isDarkTheme())
             pen.setColor(QColor(154, 154, 154));
-
-        if (m_bTransparentTrack)
-            pen.setColor(Qt::transparent);
 
         painter.setPen(pen);
         QRectF outerC(4, 4, minWH - trunkW - 2, minWH - trunkW - 2);
@@ -83,7 +78,7 @@ class FluProgressRing : public FluWidget
 
             painter.setPen(pen);
 
-            QString curPersent = QString::asprintf("%d%%", m_curValue * 100 / (m_maxValue - m_minValue));
+            QString curPersent = QString::asprintf("%d", m_curValue * 100 / (m_maxValue - m_minValue));
             painter.drawText(outerC, Qt::AlignCenter, curPersent);
         }
     }
@@ -113,29 +108,16 @@ class FluProgressRing : public FluWidget
     void setWorking(bool bWorking)
     {
         m_bWorking = bWorking;
-        update();
     }
 
     void setShowText(bool bShowText)
     {
         m_bShowText = bShowText;
-        update();
     }
 
     bool getShowText()
     {
         return m_bShowText;
-    }
-
-    bool getTransparentTrack()
-    {
-        return m_bTransparentTrack;
-    }
-
-    void setTransparentTrack(bool bTransparentTrack)
-    {
-        m_bTransparentTrack = bTransparentTrack;
-        update();
     }
 
   protected:
@@ -146,6 +128,5 @@ class FluProgressRing : public FluWidget
     int m_workStartValue;
     bool m_bWorking;
     bool m_bShowText;
-    bool m_bTransparentTrack;
     QTimer* m_workingTimer;
 };
