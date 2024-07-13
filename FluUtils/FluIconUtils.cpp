@@ -16,7 +16,7 @@ FluIconUtils::~FluIconUtils()
 {
 }
 
-FluIconUtils *FluIconUtils::getInstance()
+FluIconUtils* FluIconUtils::getInstance()
 {
     static FluIconUtils utils;
     return &utils;
@@ -44,7 +44,6 @@ QPixmap FluIconUtils::getFluentIconPixmap(FluAwesomeType nType, QColor penColor,
     painter.setFont(tmpFont);
     painter.drawText(tmpPixMap.rect(), Qt::AlignCenter, QChar((int)nType));
     painter.end();
-    // tmpPixMap.save("tmp.png");
     return tmpPixMap;
 }
 

@@ -752,13 +752,13 @@ void FluHNavigationIconTextItem::onThemeChanged()
     if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
     {
         m_iconBtn->setIcon(FluIconUtils::getFluentIcon(m_awesomeType, FluTheme::Light));
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluHNavigationIconTextItem.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHNavigationIconTextItem.qss", this);
         setArrowBtnToChevronDown();
     }
     else
     {
         m_iconBtn->setIcon(FluIconUtils::getFluentIcon(m_awesomeType, FluTheme::Dark));
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluHNavigationIconTextItem.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluHNavigationIconTextItem.qss", this);
         setArrowBtnToChevronUp();
     }
 }

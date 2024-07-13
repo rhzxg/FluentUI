@@ -10,7 +10,7 @@ FluTreeView::FluTreeView(QWidget *parent /*= nullptr*/) : QTreeWidget(parent)
     header()->setHighlightSections(false);
     header()->setDefaultAlignment(Qt::AlignCenter);
 
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTreeView.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTreeView.qss", this);
 }
 
 void FluTreeView::drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const

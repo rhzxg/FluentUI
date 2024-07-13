@@ -36,7 +36,7 @@ class FluTextToggleSwitchEx : public FluWidget
             }
         });
 
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTextToggleSwithEx.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextToggleSwithEx.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
@@ -51,11 +51,11 @@ class FluTextToggleSwitchEx : public FluWidget
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTextToggleSwithEx.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextToggleSwithEx.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluTextToggleSwithEx.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluTextToggleSwithEx.qss", this);
         }
     }
 

@@ -10,7 +10,7 @@ class FluProgressBar : public QProgressBar
     FluProgressBar(QWidget* parent = nullptr) : QProgressBar(parent)
     {
         setTextVisible(true);
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluProgressBar.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluProgressBar.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
@@ -19,11 +19,11 @@ class FluProgressBar : public QProgressBar
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluProgressBar.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluProgressBar.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluProgressBar.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluProgressBar.qss", this);
         }
     }
 

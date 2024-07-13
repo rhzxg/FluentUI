@@ -42,7 +42,7 @@ class FluVCard : public FluWidget
         vMainLaout->addWidget(m_contextLabel);
 
         setFixedSize(200, 220);
-        QString qss = FluStyleSheetUitls::getQssByFileName("../StyleSheet/light/FluVCard.qss");
+        QString qss = FluStyleSheetUitls::getQssByFileName("/resources/qss/light/FluVCard.qss");
         setStyleSheet(qss);
     }
 
@@ -72,11 +72,11 @@ class FluVCard : public FluWidget
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVCard.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVCard.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluVCard.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluVCard.qss", this);
         }
     }
 

@@ -23,7 +23,7 @@ class FluTriangle : public FluWidget
     FluTriangle(QWidget* parent = nullptr) : FluWidget(parent)
     {
         setFixedSize(20, 10);
-        // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTriangle.qss", this);
+        // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTriangle.qss", this);
     }
 
     QList<QPoint> getPointsByOrient(FluTriangleOrient orient)
@@ -110,11 +110,11 @@ class FluTriangle : public FluWidget
     {
         // if (FluThemeUtils::isLightTheme())
         //{
-        //     FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTriangle.qss", this);
+        //     FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTriangle.qss", this);
         // }
         // else
         //{
-        //     FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluTriangle.qss", this);
+        //     FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluTriangle.qss", this);
         // }
     }
 };

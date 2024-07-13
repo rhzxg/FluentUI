@@ -38,7 +38,7 @@ FluHNavigationView::FluHNavigationView(QWidget* parent /*= nullptr*/) : FluWidge
     m_hLayout->addWidget(m_rightWrapWidget);
 
     setFixedHeight(48);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluHNavigationView.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHNavigationView.qss", this);
 }
 
 void FluHNavigationView::addItemToLeftLayout(QWidget* item)

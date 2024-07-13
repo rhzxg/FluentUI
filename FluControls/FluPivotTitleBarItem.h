@@ -28,7 +28,7 @@ class FluPivotTitleBarItem : public QPushButton
         m_indicatorLabel->setFixedHeight(5);
         setSelected(false);
         setFixedHeight(45);
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluPivotTitleBarItem.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPivotTitleBarItem.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=]() { onThemeChanged(); });
         adjustItemSize();
     }
@@ -69,11 +69,11 @@ class FluPivotTitleBarItem : public QPushButton
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluPivotTitleBarItem.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPivotTitleBarItem.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluPivotTitleBarItem.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluPivotTitleBarItem.qss", this);
         }
     }
 

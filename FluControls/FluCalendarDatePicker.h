@@ -25,7 +25,8 @@ class FluCalendarDatePicker : public QPushButton
 
         setLayout(m_hMainLayout);
 
-        setFixedSize(120, 30);
+        setMinimumHeight(20);
+
         m_textButton->setText("Pick a date");
 
         m_iconButton->setIconSize(QSize(20, 20));
@@ -50,7 +51,7 @@ class FluCalendarDatePicker : public QPushButton
         connect(m_textButton, &QPushButton::clicked, [=]() { onClicked(); });
         connect(m_iconButton, &QPushButton::clicked, [=]() { onClicked(); });
 
-        FluStyleSheetUitls::setQssByFileName("./StyleSheet/light/FluCalendarDatePicker.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarDatePicker.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
         //  {
         //     onThemeChanged();
@@ -60,7 +61,7 @@ class FluCalendarDatePicker : public QPushButton
   public slots:
     void onClicked()
     {
-        LOG_DEBUG << "clicked!";
+        //LOG_DEBUG << "clicked!";
         // if (!m_calendarView->isHidden())
         // {
         //     m_calendarView->hide();
@@ -71,10 +72,10 @@ class FluCalendarDatePicker : public QPushButton
         int nX = width() / 2;
         int nY = height() + 5;
 
-        LOG_DEBUG << "nX:" << nX << ",nY:" << nY;
-        LOG_DEBUG << m_calendarView->width();
+        //LOG_DEBUG << "nX:" << nX << ",nY:" << nY;
+        //LOG_DEBUG << m_calendarView->width();
         QPoint gPoint = mapToGlobal(QPoint(nX, nY));
-        LOG_DEBUG << gPoint;
+        //LOG_DEBUG << gPoint;
         m_calendarView->move(gPoint.x() - m_calendarView->width() / 2, gPoint.y());
         m_calendarView->show();
     }
@@ -84,12 +85,12 @@ class FluCalendarDatePicker : public QPushButton
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
             m_iconButton->setIcon(FluIconUtils::getFluentIcon(FluAwesomeType::Calendar));
-            FluStyleSheetUitls::setQssByFileName("./StyleSheet/light/FluCalendarDatePicker.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarDatePicker.qss", this);
         }
         else
         {
             m_iconButton->setIcon(FluIconUtils::getFluentIcon(FluAwesomeType::Calendar, FluTheme::Dark));
-            FluStyleSheetUitls::setQssByFileName("./StyleSheet/dark/FluCalendarDatePicker.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarDatePicker.qss", this);
         }
     }
 

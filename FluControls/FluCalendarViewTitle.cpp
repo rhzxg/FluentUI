@@ -8,6 +8,7 @@ FluCalendarViewTitle::FluCalendarViewTitle(QWidget* parent /*= nullptr*/) : FluW
     setLayout(m_hMainLayout);
 
     m_yearMonthBtn = new FluPushButton;
+    m_yearMonthBtn->setFixedHeight(30);
     m_yearMonthBtn->setText("January 2000");
     m_hMainLayout->addWidget(m_yearMonthBtn);
 
@@ -23,10 +24,10 @@ FluCalendarViewTitle::FluCalendarViewTitle(QWidget* parent /*= nullptr*/) : FluW
 
     setFixedHeight(50);
 
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarViewTitle.qss", m_yearMonthBtn);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarViewTitle.qss", m_preBtn);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarViewTitle.qss", m_nextBtn);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarViewTitle.qss", this);
+    FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluCalendarViewTitle.qss", m_yearMonthBtn);
+    FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluCalendarViewTitle.qss", m_preBtn);
+    FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluCalendarViewTitle.qss", m_nextBtn);
+    FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluCalendarViewTitle.qss", this);
 }
 
 void FluCalendarViewTitle::setYearMonth(int nYear, int nMonth)

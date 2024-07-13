@@ -10,13 +10,13 @@ class FluSlider : public QSlider
   public:
     FluSlider(QWidget* parent = nullptr) : QSlider(parent)
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluSlider.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSlider.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
     FluSlider(Qt::Orientation orientation, QWidget* parent = nullptr) : QSlider(orientation, parent)
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluSlider.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSlider.qss", this);
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
@@ -25,11 +25,11 @@ class FluSlider : public QSlider
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluSlider.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSlider.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluSlider.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluSlider.qss", this);
         }
     }
 };

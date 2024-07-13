@@ -104,10 +104,10 @@ class FluMessageBox : public QDialog
 
         connect(m_cancelBtn, &QPushButton::clicked, [=]() { reject(); });
 
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluMessageBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluMessageBox.qss", this);
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluMessageBox.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluMessageBox.qss", this);
         }
 
         m_parentWidget->installEventFilter(this);
@@ -148,11 +148,11 @@ class FluMessageBox : public QDialog
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluMessageBox.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluMessageBox.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluMessageBox.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluMessageBox.qss", this);
         }
     }
 

@@ -54,11 +54,11 @@ class FluDisplayBox : public FluWidget
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluDisplayBox.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDisplayBox.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluDisplayBox.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluDisplayBox.qss", this);
         }
     }
 

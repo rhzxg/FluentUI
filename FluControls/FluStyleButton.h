@@ -10,7 +10,7 @@ class FluStyleButton : public QPushButton
     FluStyleButton(QWidget* parent = nullptr) : QPushButton(parent)
     {
         setFixedSize(200, 30);
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluStyleButton.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluStyleButton.qss", this);
         // connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, [=](FluTheme theme) { onThemeChanged(); });
         onThemeChanged();
     }
@@ -20,11 +20,11 @@ class FluStyleButton : public QPushButton
     {
         if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluStyleButton.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluStyleButton.qss", this);
         }
         else
         {
-            FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluStyleButton.qss", this);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluStyleButton.qss", this);
         }
     }
 };
