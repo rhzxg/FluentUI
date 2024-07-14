@@ -58,6 +58,16 @@ class FluCalendarDatePicker : public QPushButton
         // });
     }
 
+    QDate getCurDate()
+    {
+        return m_calendarView->getCurDate();
+    }
+
+    void setCurDate(QDate date)
+    {
+        m_calendarView->setCurDate(date);
+    }
+
   public slots:
     void onClicked()
     {
