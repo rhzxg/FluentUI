@@ -45,6 +45,8 @@ class FluCalendarDatePicker : public QPushButton
             m_textButton->setText(dateText);
             LOG_DEBUG << date;
             m_calendarView->hide();
+
+            emit selectedDate(date);
         });
 
         connect(this, &FluCalendarDatePicker::clicked, [=]() { onClicked(); });
@@ -69,6 +71,9 @@ class FluCalendarDatePicker : public QPushButton
 
         emit m_calendarView->selectedDate(date);
     }
+
+  signals:
+    void selectedDate(QDate date);
 
   public slots:
     void onClicked()

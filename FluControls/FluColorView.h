@@ -3,6 +3,7 @@
 #include "FluColorViewGradient.h"
 #include "FluColorViewHHandle.h"
 #include "FluColorViewVHandle.h"
+#include "FluIntValidator.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -16,6 +17,8 @@
 #include <QDialog>
 #include <QEvent>
 #include <QResizeEvent>
+#include <QMutex>
+#include <QApplication>
 
 class FluColorView : public QDialog
 {
@@ -24,7 +27,7 @@ class FluColorView : public QDialog
     FluColorView(QWidget* parent = nullptr) : QDialog(parent)
     {
         m_parentWidget = parent;
-
+        setMouseTracking(true);
         m_hMainLayout = new QHBoxLayout(this);
         m_windowMask = new QWidget(this);
         m_windowMask->setObjectName("windowMask");
@@ -53,7 +56,7 @@ class FluColorView : public QDialog
         m_widget->setLayout(m_vContentWidgetLayout);
 
         auto hLayout = new QHBoxLayout;
-        auto colorViewGradient = new FluColorViewGradient;
+        colorViewGradient = new FluColorViewGradient;
         colorViewGradient->setFixedSize(256, 256);
 
         auto colorViewVHandle = new FluColorViewVHandle;
@@ -64,7 +67,7 @@ class FluColorView : public QDialog
 
         m_vContentWidgetLayout->addLayout(hLayout);
 
-        auto colorViewHHandle = new FluColorViewHHandle;
+        colorViewHHandle = new FluColorViewHHandle;
         colorViewHHandle->setFixedHeight(17);
         m_vContentWidgetLayout->addWidget(colorViewHHandle);
 
@@ -73,7 +76,10 @@ class FluColorView : public QDialog
         rLabel->setLabelStyle(FluLabelStyle::BodyTextBlockStyle);
         rLabel->setFixedWidth(50);
         rLabel->setText("Red:");
-        auto rEdit = new FluLineEdit;
+
+        rEdit = new FluLineEdit;
+        rEdit->setText("0");
+        rEdit->setValidator(new FluIntValidator(0, 255, rEdit));
         rEdit->setFixedSize(120, 35);
 
         hLayout->addWidget(rLabel);
@@ -88,7 +94,9 @@ class FluColorView : public QDialog
         gLabel->setText("Green:");
         gLabel->setFixedWidth(50);
 
-        auto gEdit = new FluLineEdit;
+        gEdit = new FluLineEdit;
+        gEdit->setText("0");
+        gEdit->setValidator(new FluIntValidator(0, 255, gEdit));
         gEdit->setFixedSize(120, 35);
 
         hLayout->addWidget(gLabel);
@@ -103,7 +111,9 @@ class FluColorView : public QDialog
         bLabel->setText("Blue:");
         bLabel->setFixedWidth(50);
 
-        auto bEdit = new FluLineEdit;
+        bEdit = new FluLineEdit;
+        bEdit->setText("0");
+        bEdit->setValidator(new FluIntValidator(0, 255, bEdit));
         bEdit->setFixedSize(120, 35);
 
         hLayout->addWidget(bLabel);
@@ -140,12 +150,42 @@ class FluColorView : public QDialog
             int g = colorViewHHandle->getColor().green() * percentage;
             int b = colorViewHHandle->getColor().blue() * percentage;
 
+            // m_bRgbChanging = true;
+
+            // m_mutex.lock();
             rEdit->setText(QString::asprintf("%d", r));
             gEdit->setText(QString::asprintf("%d", g));
             bEdit->setText(QString::asprintf("%d", b));
-
             colorViewVHandle->setColor(QColor(r, g, b));
+            // m_mutex.unlock();
+            // m_bRgbChanging = false;
         });
+
+        connect(rEdit, &FluLineEdit::textChanged, this, [=](const QString& rValue) { onRgbValueChanged(); });
+
+        connect(gEdit, &FluLineEdit::textChanged, this, [=](const QString& gValue) { onRgbValueChanged(); });
+
+        connect(bEdit, &FluLineEdit::textChanged, this, [=](const QString& bValue) { onRgbValueChanged(); });
+
+        connect(colorViewHHandle, &FluColorViewHHandle::pressed, this, [=]() {
+            rEdit->clearFocus();
+            gEdit->clearFocus();
+            bEdit->clearFocus();
+        });
+    }
+
+    void mousePressEvent(QMouseEvent* event)
+    {
+        auto child = static_cast<QWidget*>(childAt(event->pos()));
+        if (child == nullptr)
+            return;
+
+        if (child != rEdit && child != gEdit && child != bEdit)
+        {
+            rEdit->clearFocus();
+            gEdit->clearFocus();
+            bEdit->clearFocus();
+        }
     }
 
     void resizeEvent(QResizeEvent* event)
@@ -177,6 +217,55 @@ class FluColorView : public QDialog
     }
 
   public slots:
+
+    void onRgbValueChanged()
+    {
+        bool bHasFocus = rEdit->hasFocus() || bEdit->hasFocus() || gEdit->hasFocus();
+        if (!bHasFocus)
+            return;
+
+        // get r value;
+        // get g value;
+        // get b value;
+        int r = rEdit->text().toInt();
+        int g = gEdit->text().toInt();
+        int b = bEdit->text().toInt();
+
+        // if (m_bRgbChanging)
+        //{
+        //     LOG_DEBUG << "called";
+        //     return;
+        // }
+
+        float fv = 0;
+        if (r >= g && r >= b)
+        {
+            fv = r * 1.0 / 255;
+            // return;
+        }
+
+        if (g >= r && g >= b)
+        {
+            fv = g * 1.0 / 255;
+        }
+
+        if (b >= r && b >= g)
+        {
+            fv = b * 1.0 / 255;
+        }
+
+        r = r / fv;
+        g = g / fv;
+        b = b / fv;
+
+        // m_mutex.lock();
+        colorViewHHandle->setV(fv);
+        colorViewHHandle->setColor(QColor(r, g, b), false);
+
+        // m_mutex.unlock();
+        colorViewGradient->circleMoveToPoint(QColor(r, g, b));
+    }
+
     void onThemeChanged()
     {
         if (FluThemeUtils::isLightTheme())
@@ -190,6 +279,7 @@ class FluColorView : public QDialog
     }
 
   protected:
+    bool m_bRgbChanging;
     QWidget* m_parentWidget;
     QWidget* m_windowMask;
 
@@ -198,4 +288,15 @@ class FluColorView : public QDialog
     // content widget;
     QFrame* m_widget;
     QVBoxLayout* m_vContentWidgetLayout;
+
+    FluColorViewGradient* colorViewGradient;
+    // colorViewHHandle;
+    FluColorViewHHandle* colorViewHHandle;
+    // r/g/b edit;
+    FluLineEdit* rEdit;
+    FluLineEdit* gEdit;
+    FluLineEdit* bEdit;
+
+    // mutex;
+    QMutex m_mutex;
 };
