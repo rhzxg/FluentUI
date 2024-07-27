@@ -13,7 +13,8 @@ class FluTimePicker24HView : public FluWidget
 {
     Q_OBJECT
   public:
-    FluTimePicker24HView(QWidget* parent = nullptr) : FluWidget(parent), m_bFirstShow(true)
+    FluTimePicker24HView(bool withSecond = false, QWidget* parent = nullptr)
+        : FluWidget(parent), m_bFirstShow(true), m_bWithSecond(withSecond)
     {
         setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
         setAttribute(Qt::WA_TranslucentBackground);
@@ -27,8 +28,8 @@ class FluTimePicker24HView : public FluWidget
         // setLayout(m_hViewLayout);
         m_vMainLayout->addLayout(m_hViewLayout);
 
-        m_hourView = new FluLoopView(120);
-        m_minuteView = new FluLoopView(120);
+        m_hourView = new FluLoopView(100);
+        m_minuteView = new FluLoopView(100);
 
         // set hour data;
         std::vector<QString> datas;
@@ -51,6 +52,13 @@ class FluTimePicker24HView : public FluWidget
         m_hViewLayout->setSpacing(0);
         m_hViewLayout->addWidget(m_hourView);
         m_hViewLayout->addWidget(m_minuteView);
+
+        if (withSecond)
+        {
+            m_secondView = new FluLoopView(100);
+            m_secondView->setAllItems(datas);
+            m_hViewLayout->addWidget(m_secondView);
+        }
 
         m_hBtnLayout = new QHBoxLayout;
         m_hBtnLayout->setContentsMargins(5, 5, 5, 5);
@@ -101,6 +109,11 @@ class FluTimePicker24HView : public FluWidget
         return m_minute;
     }
 
+    int getSecond()
+    {
+        return m_second;
+    }
+
     void setHour(int hour)
     {
         m_hour = hour;
@@ -115,10 +128,22 @@ class FluTimePicker24HView : public FluWidget
         // m_hourView->scrollTo(minute);
     }
 
+    void setSecond(int second)
+    {
+        m_second = second;
+        m_secondView->setVisibaleMidIndex(second);
+        // m_hourView->scrollTo(minute);
+    }
+
     void updateTime()
     {
         m_hour = m_hourView->getVisibleMidIndex();
         m_minute = m_minuteView->getVisibleMidIndex();
+
+        if (m_bWithSecond)
+        {
+            m_second = m_secondView->getVisibleMidIndex();
+        }
     }
 
     void paintEvent(QPaintEvent* event)
@@ -138,6 +163,11 @@ class FluTimePicker24HView : public FluWidget
         m_bFirstShow = false;
         m_hourView->scrollTo(m_hour);
         m_minuteView->scrollTo(m_minute);
+
+        if (m_bWithSecond)
+        {
+            m_secondView->scrollTo(m_second);
+        }
     }
   signals:
     void clickedOk();
@@ -167,12 +197,15 @@ class FluTimePicker24HView : public FluWidget
 
     FluLoopView* m_hourView;
     FluLoopView* m_minuteView;
+    FluLoopView* m_secondView;
 
     QPushButton* m_okBtn;
     QPushButton* m_cancelBtn;
 
     int m_hour;
     int m_minute;
+    int m_second;
 
     bool m_bFirstShow;
+    bool m_bWithSecond;
 };

@@ -85,7 +85,7 @@ FluCalendarMonthView::FluCalendarMonthView(QWidget* parent /*= nullptr*/) : FluW
                 label->style()->polish(label);
                 // m_calendarView->setCurDate(label->getCurDate());
 
-                LOG_DEBUG << label->getCurDate();
+                // LOG_DEBUG << label->getCurDate();
 
                 m_calendarView->setCurDate(label->getCurDate());
                 emit m_calendarView->selectedDate(label->getCurDate());
