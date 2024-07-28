@@ -8,7 +8,7 @@
 FluVNavigationView::FluVNavigationView(QWidget *parent /*= nullptr*/) : FluWidget(parent)
 {
     m_vLayout = new QVBoxLayout(this);
-    m_vLayout->setContentsMargins(4, 8, 4, 8);
+    m_vLayout->setContentsMargins(4, 0, 4, 0);
     m_topWrapWidget = new QWidget(this);
     m_midVScrollView = new FluVScrollView(this);
     m_bottomWrapWidget = new QWidget(this);
@@ -39,13 +39,13 @@ FluVNavigationView::FluVNavigationView(QWidget *parent /*= nullptr*/) : FluWidge
     m_vTopWrapLayout->addWidget(menuButtonItem);
 
     auto searchItem = new FluVNavigationSearchItem;
-    m_vTopWrapLayout->addWidget(searchItem);
+    // m_vTopWrapLayout->addWidget(searchItem);
 
     QString qss = FluStyleSheetUitls::getQssByFileName("/resources/qss/light/FluVNavigationView.qss");
     setStyleSheet(qss);
 
     m_bLong = true;
-    setFixedWidth(320 + 20);
+    setFixedWidth(220 + 10);
     connect(menuButtonItem, &FluVNavigationMenuItem::menuItemClicked, [=]() { onMenuItemClicked(); });
     connect(searchItem, &FluVNavigationSearchItem::itemClicked, [=]() { onMenuItemClicked(); });
 }
@@ -251,8 +251,8 @@ void FluVNavigationView::onMenuItemClicked()
             if (item->getItemType() == FluVNavigationItemType::IconText)
             {
                 auto iconTextItem = (FluVNavigationIconTextItem *)(item);
-                iconTextItem->setFixedWidth(320);
-                iconTextItem->getWrapWidget1()->setFixedWidth(320);
+                iconTextItem->setFixedWidth(220);
+                iconTextItem->getWrapWidget1()->setFixedWidth(220);
                 iconTextItem->showLabelArrow();
             }
 
@@ -261,7 +261,7 @@ void FluVNavigationView::onMenuItemClicked()
                 auto settingsItem = (FluVNavigationSettingsItem *)(item);
                 if (settingsItem != nullptr)
                 {
-                    settingsItem->setFixedWidth(320);
+                    settingsItem->setFixedWidth(220);
                     settingsItem->showLabel();
                 }
             }
@@ -271,14 +271,14 @@ void FluVNavigationView::onMenuItemClicked()
                 auto searchItem = (FluVNavigationSearchItem *)(item);
                 if (searchItem != nullptr)
                 {
-                    searchItem->setFixedWidth(320);
+                    searchItem->setFixedWidth(220);
                     searchItem->hideSearchButton();
                 }
             }
         }
 
         m_midVScrollView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        setFixedWidth(320 + 20);
+        setFixedWidth(220 + 10);
         m_bLong = true;
     }
 }

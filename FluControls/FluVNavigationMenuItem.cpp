@@ -35,7 +35,7 @@ FluVNavigationMenuItem::FluVNavigationMenuItem(QWidget *parent /*= nullptr*/) : 
     m_wrapWidget1->setFixedHeight(40);
     m_wrapWidget2->setFixedHeight(40);
     setFixedHeight(40);
-    setFixedWidth(320);
+    setFixedWidth(220);
 
     m_menuButton->setObjectName("menuButton");
 
