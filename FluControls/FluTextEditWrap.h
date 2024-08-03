@@ -10,9 +10,11 @@ class FluTextEditWrap : public QWidget
 {
     Q_OBJECT
   public:
-    FluTextEditWrap(FluTextEdit* parent = nullptr) : QWidget(parent), m_textEdit(parent)
+    FluTextEditWrap(FluTextEdit* parent = nullptr)
+        : QWidget(parent), m_textEdit(parent)
     {
         setAttribute(Qt::WA_TranslucentBackground);
+        setAttribute(Qt::WA_TransparentForMouseEvents, true);
         if (parent != nullptr)
             parent->installEventFilter(this);
     }

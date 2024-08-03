@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <QTextEdit>
@@ -47,5 +48,5 @@ class FluTextEdit : public QTextEdit
 
   protected:
     FluTextEditWrap* m_wrap;
-    bool m_bAutoAdjustSize;
+    bool             m_bAutoAdjustSize;
 };
