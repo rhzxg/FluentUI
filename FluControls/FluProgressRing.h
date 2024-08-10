@@ -9,7 +9,7 @@ class FluProgressRing : public FluWidget
 {
     Q_OBJECT
   public:
-    FluProgressRing(QWidget* parent = nullptr) : FluWidget(parent)
+    FluProgressRing(QWidget* parent = nullptr) : FluWidget(parent), m_bTransparentTrack(true)
     {
         m_minValue = 0;
         m_maxValue = 100;
@@ -31,8 +31,10 @@ class FluProgressRing : public FluWidget
             if (!m_bWorking)
                 return;
 
-            m_workStartValue += 1;
-            m_workStartValue %= 360;
+            m_workStartValue -= 1;
+            // m_workStartValue %= 360;
+            if (m_workStartValue == 0)
+                m_workStartValue = 360;
             update();
         });
     }
@@ -73,7 +75,7 @@ class FluProgressRing : public FluWidget
             // drawText
             pen.setWidth(1);
             pen.setColor(Qt::black);
-            if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
+            if (FluThemeUtils::isDarkTheme())
                 pen.setColor(Qt::white);
 
             painter.setPen(pen);

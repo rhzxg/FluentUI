@@ -115,7 +115,7 @@ bool FluHNavigationFlyIconTextItem::setCloseByClickedItem()
 
 void FluHNavigationFlyIconTextItem::onThemeChanged()
 {
-    if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+    if (FluThemeUtils::isLightTheme())
     {
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHNavigationFlyIconTextItem.qss", m_vScrollView);
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHNavigationFlyIconTextItem.qss", this);

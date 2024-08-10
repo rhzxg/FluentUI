@@ -23,24 +23,13 @@ class FluLabel : public QLabel
     FluLabel(QWidget* parent = nullptr) : QLabel(parent)
     {
         m_style = FluLabelStyle::CaptionTextBlockSylte;
-        FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluLabel.qss", this);
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
-        {
-            FluStyleSheetUitls::setQssByFileName("./resources/qss/dark/FluLabel.qss", this);
-        }
+        onThemeChanged();
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
     FluLabel(FluLabelStyle style, QWidget* parent = nullptr) : QLabel(parent), m_style(style)
     {
-        // reference WinUi3 Gallary Typeography page.
-        // setProperty("style", m_style);
-        setLabelStyle(style);
-        FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluLabel.qss", this);
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
-        {
-            FluStyleSheetUitls::setQssByFileName("./resources/qss/dark/FluLabel.qss", this);
-        }
+        onThemeChanged();
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
@@ -83,7 +72,7 @@ class FluLabel : public QLabel
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluLabel.qss", this);
         }

@@ -97,19 +97,25 @@ class FluAutoSuggestBox : public FluWidget
         m_keys = keys;
     }
 
-    QString getText() { return m_lineEdit->text(); }
+    QString getText()
+    {
+        return m_lineEdit->text();
+    }
 
     void setText(QString text)
     {
         m_lineEdit->setText(text);
     }
 
-    void setPlaceholderText(QString text) 
-    { 
-        m_lineEdit->setPlaceholderText(text); 
+    void setPlaceholderText(QString text)
+    {
+        m_lineEdit->setPlaceholderText(text);
     }
 
-    QString getPlaceholderText() { return m_lineEdit->placeholderText(); }
+    QString getPlaceholderText()
+    {
+        return m_lineEdit->placeholderText();
+    }
 
     bool eventFilter(QObject* watched, QEvent* event)
     {
@@ -158,11 +164,11 @@ class FluAutoSuggestBox : public FluWidget
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluAutoSuggestBox.qss", this);
         }
-        else
+        else if (FluThemeUtils::isDarkTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluAutoSuggestBox.qss", this);
         }

@@ -105,7 +105,7 @@ class FluMessageBox : public QDialog
         connect(m_cancelBtn, &QPushButton::clicked, [=]() { reject(); });
 
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluMessageBox.qss", this);
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
+        if (FluThemeUtils::isDarkTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluMessageBox.qss", this);
         }
@@ -146,7 +146,7 @@ class FluMessageBox : public QDialog
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluMessageBox.qss", this);
         }

@@ -55,7 +55,7 @@ class FluVNavigationView : public FluWidget
     void onThemeChanged()
     {
         // LOG_DEBUG << "called";
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVNavigationView.qss", this);
         }

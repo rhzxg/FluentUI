@@ -34,7 +34,7 @@ class FluCalendarSelectYearView : public FluWidget
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarSelectYearView.qss", this);
         }

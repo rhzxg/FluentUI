@@ -36,7 +36,7 @@ class FluTextEdit : public QTextEdit
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluTextEdit.qss", this);
         }

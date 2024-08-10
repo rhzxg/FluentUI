@@ -20,7 +20,7 @@ class FluRatingControl : public FluWidget
         addStar();
         setFixedSize(170, 45);
 
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
+        if (FluThemeUtils::isDarkTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluRatingControl.qss", this);
         }
@@ -82,7 +82,7 @@ class FluRatingControl : public FluWidget
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluRatingControl.qss", this);
         }

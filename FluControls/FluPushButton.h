@@ -12,9 +12,10 @@ class FluPushButton : public QPushButton
   public:
     FluPushButton(QWidget *parent = nullptr) : QPushButton(parent)
     {
-        setMinimumHeight(20);
+        setFixedSize(200, 30);
+        // setFixedHeight(30);
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPushButton.qss", this);
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Dark)
+        if (FluThemeUtils::isDarkTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluPushButton.qss", this);
         }
@@ -23,7 +24,7 @@ class FluPushButton : public QPushButton
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPushButton.qss", this);
         }

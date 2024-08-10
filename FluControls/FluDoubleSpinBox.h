@@ -26,7 +26,7 @@ class FluDoubleSpinBox : public QDoubleSpinBox
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDoubleSpinBox.qss", this);
         }

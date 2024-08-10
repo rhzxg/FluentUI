@@ -22,7 +22,7 @@ class FluCheckBox : public QCheckBox
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCheckBox.qss", this);
         }

@@ -25,7 +25,7 @@ class FluSpinBox : public QSpinBox
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSpinBox.qss", this);
         }

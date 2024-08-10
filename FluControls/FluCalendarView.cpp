@@ -175,7 +175,7 @@ FluCalendarSelectYearView* FluCalendarView::getSelectYearView()
 
 void FluCalendarView::onThemeChanged()
 {
-    if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+    if (FluThemeUtils::isLightTheme())
     {
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarView.qss", this);
     }

@@ -49,7 +49,7 @@ class FluHScrollView : public QScrollArea
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHScrollView.qss", this);
         }

@@ -61,7 +61,7 @@ class FluCalendarMonthView : public FluWidget
   public slots:
     void onThemeChanged()
     {
-        if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+        if (FluThemeUtils::isLightTheme())
         {
             FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarMonthView.qss", this);
         }
@@ -116,7 +116,7 @@ class FluCalendarSelectDayView : public FluWidget
   public slots:
     // void onThemeChanged()
     //  {
-    //      if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+    //      if (FluThemeUtils::isLightTheme())
     //      {
     //          FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarSelectDayView.qss", this);
     //      }

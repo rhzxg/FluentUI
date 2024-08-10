@@ -38,7 +38,7 @@ void FluCalendarViewWeakTitle::paintEvent(QPaintEvent* event)
 
 void FluCalendarViewWeakTitle::onThemeChanged()
 {
-    if (FluThemeUtils::getUtils()->getTheme() == FluTheme::Light)
+    if (FluThemeUtils::isLightTheme())
     {
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarViewWeakTitle.qss", this);
     }
