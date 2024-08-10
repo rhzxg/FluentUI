@@ -9,12 +9,13 @@ class FluProgressRing : public FluWidget
 {
     Q_OBJECT
   public:
-    FluProgressRing(QWidget* parent = nullptr) : FluWidget(parent), m_bTransparentTrack(true)
+    FluProgressRing(QWidget* parent = nullptr)
+        : FluWidget(parent), m_bTransparentTrack(true)
     {
-        m_minValue = 0;
-        m_maxValue = 100;
-        m_curValue = 0;
-        m_bWorking = false;
+        m_minValue  = 0;
+        m_maxValue  = 100;
+        m_curValue  = 0;
+        m_bWorking  = false;
         m_bShowText = false;
         setFixedSize(60, 60);
 
@@ -43,14 +44,19 @@ class FluProgressRing : public FluWidget
     {
         QPainter painter(this);
         painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-        float minWH = qMin(width(), height());
+        float minWH  = qMin(width(), height());
         float trunkW = 6;
 
         QPen pen;
         pen.setWidth(6);
+        pen.setCapStyle(Qt::RoundCap);
+        pen.setJoinStyle(Qt::RoundJoin);
         pen.setColor(QColor(211, 211, 211));
         if (FluThemeUtils::isDarkTheme())
             pen.setColor(QColor(154, 154, 154));
+
+        if (m_bTransparentTrack)
+            pen.setColor(Qt::transparent);
 
         painter.setPen(pen);
         QRectF outerC(4, 4, minWH - trunkW - 2, minWH - trunkW - 2);
@@ -80,7 +86,7 @@ class FluProgressRing : public FluWidget
 
             painter.setPen(pen);
 
-            QString curPersent = QString::asprintf("%d", m_curValue * 100 / (m_maxValue - m_minValue));
+            QString curPersent = QString::asprintf("%d%%", m_curValue * 100 / (m_maxValue - m_minValue));
             painter.drawText(outerC, Qt::AlignCenter, curPersent);
         }
     }
@@ -110,11 +116,13 @@ class FluProgressRing : public FluWidget
     void setWorking(bool bWorking)
     {
         m_bWorking = bWorking;
+        update();
     }
 
     void setShowText(bool bShowText)
     {
         m_bShowText = bShowText;
+        update();
     }
 
     bool getShowText()
@@ -122,13 +130,25 @@ class FluProgressRing : public FluWidget
         return m_bShowText;
     }
 
+    bool getTransparentTrack()
+    {
+        return m_bTransparentTrack;
+    }
+
+    void setTransparentTrack(bool bTransparentTrack)
+    {
+        m_bTransparentTrack = bTransparentTrack;
+        update();
+    }
+
   protected:
     int m_minValue;
     int m_maxValue;
     int m_curValue;
 
-    int m_workStartValue;
-    bool m_bWorking;
-    bool m_bShowText;
+    int     m_workStartValue;
+    bool    m_bWorking;
+    bool    m_bShowText;
+    bool    m_bTransparentTrack;
     QTimer* m_workingTimer;
 };
