@@ -83,7 +83,7 @@ class FluTimePicker24H : public FluWidget
 
             QString format = withSecond ? "hhmmss" : "hhmm";
             QString time   = withSecond ? sHour + sMinute + sSecond : sHour + sMinute;
-            emit    selectedTime(QTime::fromString(format, time));
+            emit    selectedTime(QTime::fromString(time, format));
         });
 
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTimePicker24H.qss", this);
