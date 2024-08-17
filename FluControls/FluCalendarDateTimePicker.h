@@ -64,6 +64,12 @@ class FluCalendarDateTimePicker : public QPushButton
         // });
     }
 
+    void reset()
+    {
+        setCurDate(QDate::currentDate());
+        m_textButton->setText("Pick a date");
+    }
+
     QDate getCurDate()
     {
         return m_calendarView->getCurDate();
