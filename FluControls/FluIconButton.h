@@ -12,8 +12,7 @@ class FluIconButton : public QPushButton
 {
     Q_OBJECT
   public:
-    FluIconButton(QWidget* parent = nullptr)
-        : QPushButton(parent)
+    FluIconButton(QWidget* parent = nullptr) : QPushButton(parent), m_type1(FluAwesomeType::None), m_type2(FluAwesomeType::None), m_type(FluAwesomeType::None)
     {
         // set fixed size
         setFixedSize(30, 30);
@@ -41,8 +40,7 @@ class FluIconButton : public QPushButton
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
     }
 
-    FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget* parent = nullptr)
-        : QPushButton(parent), m_type1(type1), m_type2(type2)
+    FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget* parent = nullptr) : QPushButton(parent), m_type1(type1), m_type2(type2), m_type(FluAwesomeType::None)
     {
         setFixedSize(30, 30);
         setIconSize(QSize(20, 20));
