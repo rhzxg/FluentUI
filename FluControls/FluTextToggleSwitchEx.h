@@ -9,14 +9,15 @@ class FluTextToggleSwitchEx : public FluWidget
 {
     Q_OBJECT
   public:
-    FluTextToggleSwitchEx(QWidget* parent = nullptr) : FluWidget(parent)
+    FluTextToggleSwitchEx(QWidget* parent = nullptr)
+        : FluWidget(parent)
     {
         m_hMainLayout = new QHBoxLayout;
         m_hMainLayout->setContentsMargins(0, 0, 0, 0);
         setLayout(m_hMainLayout);
 
         m_toggleSwithEx = new FluToggleSwitchEx;
-        m_textLabel = new FluLabel;
+        m_textLabel     = new FluLabel;
         m_textLabel->setLabelStyle(FluLabelStyle::BodyTextBlockStyle);
         m_textLabel->setWordWrap(true);
 
@@ -34,6 +35,8 @@ class FluTextToggleSwitchEx : public FluWidget
             {
                 m_textLabel->setText(m_offText);
             }
+
+            emit stateChanged(bChecked);
         });
 
         FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextToggleSwithEx.qss", this);
@@ -43,9 +46,15 @@ class FluTextToggleSwitchEx : public FluWidget
     void setText(QString onText, QString offText)
     {
         // m_textLabel->setText(text);
-        m_onText = onText;
+        m_onText  = onText;
         m_offText = offText;
     }
+
+    void setChecked(bool checked)
+    {
+        m_toggleSwithEx->setChecked(checked);
+    }
+
   public slots:
     void onThemeChanged()
     {
@@ -59,11 +68,14 @@ class FluTextToggleSwitchEx : public FluWidget
         }
     }
 
+  signals:
+    void stateChanged(bool checked);
+
   protected:
     QString m_onText;
     QString m_offText;
 
-    QHBoxLayout* m_hMainLayout;
+    QHBoxLayout*       m_hMainLayout;
     FluToggleSwitchEx* m_toggleSwithEx;
-    FluLabel* m_textLabel;
+    FluLabel*          m_textLabel;
 };

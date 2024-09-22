@@ -8,9 +8,10 @@ class FluToggleSwitch : public QCheckBox
 {
     Q_OBJECT
   public:
-    FluToggleSwitch(QWidget* parent = nullptr) : QCheckBox(parent)
+    FluToggleSwitch(QWidget* parent = nullptr)
+        : QCheckBox(parent)
     {
-        m_onText = "On";
+        m_onText  = "On";
         m_offText = "Off";
 
         m_bEmptyText = false;
@@ -22,29 +23,15 @@ class FluToggleSwitch : public QCheckBox
                 return;
 
             if (bChecked)
+            {
                 setText(m_onText);
+                setCheckState(Qt::Checked);
+            }
             else
+            {
                 setText(m_offText);
-        });
-
-        connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
-    }
-
-    FluToggleSwitch(QString text, QWidget* parent = nullptr) : QCheckBox(text, parent)
-    {
-        m_onText = "On";
-        m_offText = "Off";
-
-        setText(m_offText);
-        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluToggleSwitch.qss", this);
-        connect(this, &FluToggleSwitch::clicked, [=](bool bChecked) {
-            if (m_bEmptyText)
-                return;
-
-            if (bChecked)
-                setText(m_onText);
-            else
-                setText(m_offText);
+                setCheckState(Qt::Checked);
+            }
         });
 
         connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
@@ -52,7 +39,7 @@ class FluToggleSwitch : public QCheckBox
 
     void setOnOffText(QString onText, QString offText)
     {
-        m_onText = onText;
+        m_onText  = onText;
         m_offText = offText;
     }
 
@@ -75,7 +62,7 @@ class FluToggleSwitch : public QCheckBox
     }
 
   protected:
-    bool m_bEmptyText;
+    bool    m_bEmptyText;
     QString m_onText;
     QString m_offText;
 };
