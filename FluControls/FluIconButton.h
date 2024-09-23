@@ -27,7 +27,21 @@ class FluIconButton : public QPushButton
     void setNoBorder(bool bNoBorder);
 
   public slots:
-    void onThemeChanged();
+    void onThemeChanged()
+    {
+        if (FluThemeUtils::isLightTheme())
+        {
+            m_penColor = QColor(8, 8, 8);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluIconButton.qss", this);
+            setType(m_type);
+        }
+        else
+        {
+            m_penColor = QColor(239, 239, 239);
+            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluIconButton.qss", this);
+            setType(m_type);
+        }
+    }
 
   protected:
     FluAwesomeType m_type;
