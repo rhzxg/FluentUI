@@ -14,6 +14,39 @@ FluTextEdit::FluTextEdit(QWidget* parent /*= nullptr*/)
 
         setFixedHeight(this->document()->size().height() + 6);
     });
-    FluStyleSheetUitls::setQssByFileName("./resources/qss/light/FluTextEdit.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextEdit.qss", this);
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
+}
+
+bool FluTextEdit::getAutoAdjustSize()
+{
+    return m_bAutoAdjustSize;
+}
+
+void FluTextEdit::setAutoAdjustSize(bool bAdjustSize)
+{
+    m_bAutoAdjustSize = bAdjustSize;
+    document()->contentsChanged();
+}
+
+void FluTextEdit::paintEvent(QPaintEvent* event)
+{
+    QTextEdit::paintEvent(event);
+    if (!hasFocus())
+        return;
+
+    QPainter painter(viewport());
+    FluStyleSheetUitls::drawBottomLineIndicator(this, &painter);
+}
+
+void FluTextEdit::onThemeChanged()
+{
+    if (FluThemeUtils::isLightTheme())
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextEdit.qss", this);
+    }
+    else
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluTextEdit.qss", this);
+    }
 }

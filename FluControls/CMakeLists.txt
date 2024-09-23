@@ -15,10 +15,18 @@ message("qt_add_library(\${TGT} STATIC")
     endforeach()
 message(")")
 
-qt_add_library(${TGT}
-    STATIC 
-    ${DIR_SRCS}
-)
+if (${QT_VERSION_MAJOR} LESS 6)
+    add_library(${TGT}
+        STATIC
+        ${DIR_SRCS}
+    )
+else()
+    qt_add_library(${TGT}
+        STATIC
+        ${DIR_SRCS}
+    )
+endif()
+
 
 set_property(TARGET ${TGT} PROPERTY FOLDER "FluentUI")
 

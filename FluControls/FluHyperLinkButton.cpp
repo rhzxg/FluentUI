@@ -7,3 +7,20 @@ FluHyperLinkButton::FluHyperLinkButton(QString linkUrl, QWidget* parent /* = nul
     onThemeChanged();
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
 }
+
+void FluHyperLinkButton::setLinkUrl(QString linkUrl)
+{
+    m_linkUrl = linkUrl;
+}
+
+void FluHyperLinkButton::onThemeChanged()
+{
+    if (FluThemeUtils::isLightTheme())
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHyperLinkButton.qss", this);
+    }
+    else
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluHyperLinkButton.qss", this);
+    }
+}

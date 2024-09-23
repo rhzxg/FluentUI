@@ -13,48 +13,17 @@ class FluCalendarViewTitle : public FluWidget
   public:
     FluCalendarViewTitle(QWidget* parent = nullptr);
 
-    FluPushButton* getYearMonthBtn()
-    {
-        return m_yearMonthBtn;
-    }
+    FluPushButton* getYearMonthBtn();
 
-    FluIconButton* getNextBtn()
-    {
-        return m_nextBtn;
-    }
+    FluIconButton* getNextBtn();
 
-    FluIconButton* getPreBtn()
-    {
-        return m_preBtn;
-    }
+    FluIconButton* getPreBtn();
 
     void setYearMonth(int nYear, int nMonth);
 
-    void paintEvent(QPaintEvent* event)
-    {
-        QStyleOption opt;
-        opt.initFrom(this);
-        QPainter painter(this);
-        style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
-    }
+    void paintEvent(QPaintEvent* event);
   public slots:
-    void onThemeChanged()
-    {
-        if (FluThemeUtils::isLightTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarViewTitle.qss", m_yearMonthBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarViewTitle.qss", m_preBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarViewTitle.qss", m_nextBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarViewTitle.qss", this);
-        }
-        else
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarViewTitle.qss", m_yearMonthBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarViewTitle.qss", m_preBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarViewTitle.qss", m_nextBtn);
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarViewTitle.qss", this);
-        }
-    }
+    void onThemeChanged();
 
   protected:
     FluPushButton* m_yearMonthBtn;

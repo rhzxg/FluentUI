@@ -10,34 +10,11 @@ class FluPushButton : public QPushButton
 {
     Q_OBJECT
   public:
-    FluPushButton(QWidget *parent = nullptr) : QPushButton(parent)
-    {
-        setMinimumHeight(20);
-        // setFixedHeight(30);
-        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPushButton.qss", this);
-        if (FluThemeUtils::isDarkTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluPushButton.qss", this);
-        }
-        connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
-    }
-    
-	FluPushButton(const QString &text, QWidget *parent = nullptr) : FluPushButton(parent)
-    {
-        setText(text);
-    }
+    FluPushButton(QWidget *parent = nullptr);
+
+    FluPushButton(const QString &text, QWidget *parent = nullptr);
   public slots:
-    void onThemeChanged()
-    {
-        if (FluThemeUtils::isLightTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPushButton.qss", this);
-        }
-        else
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluPushButton.qss", this);
-        }
-    }
+    void onThemeChanged();
 
   protected:
 };

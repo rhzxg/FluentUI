@@ -27,17 +27,7 @@ class FluCalendarSelectMonthView : public FluWidget
     FluCalendarItem* getItem(int nIndex);
 
   public slots:
-    void onThemeChanged()
-    {
-        if (FluThemeUtils::isLightTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarSelectMonthView.qss", this);
-        }
-        else
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarSelectMonthView.qss", this);
-        }
-    }
+    void onThemeChanged();
 
   protected:
     QGridLayout* m_gMainLayout;

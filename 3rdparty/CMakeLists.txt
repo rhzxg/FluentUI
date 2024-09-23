@@ -10,3 +10,20 @@ target_link_libraries(${TGT}
     FramelessHelperCore
     FramelessHelperWidgets
 )
+
+
+set(QWINDOWKIT_BUILD_STATIC ON)
+set(QWINDOWKIT_BUILD_QUICK OFF)
+set(QWINDOWKIT_INSTALL OFF)
+add_subdirectory("qwindowkit-1.1.0")
+
+set(TGT qwindowkit)
+add_library(qwindowkit INTERFACE)
+target_link_libraries(${TGT}
+    INTERFACE
+    QWKCore
+    QWKWidgets
+)
+
+add_subdirectory("qscintilla-2.14.0")
+

@@ -30,3 +30,47 @@ FluDisplayBox::FluDisplayBox(QWidget* parent /*= nullptr*/) : FluWidget(parent)
     m_codeExpander->setObjectName("codeExpander");
     FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDisplayBox.qss", this);
 }
+
+void FluDisplayBox::setTitle(QString title)
+{
+    m_titleLabel->setText(title);
+}
+
+QVBoxLayout* FluDisplayBox::getBodyLayout()
+{
+    return m_vBodyLayout;
+}
+QWidget* FluDisplayBox::getBodyWidget()
+{
+    return m_bodyWidget;
+}
+
+FluCodeExpander* FluDisplayBox::getCodeExpander()
+{
+    return m_codeExpander;
+}
+
+void FluDisplayBox::setBodyWidgetFixedHeight(int nHeight)
+{
+    m_bodyWidget->setFixedHeight(nHeight);
+}
+
+void FluDisplayBox::paintEvent(QPaintEvent* event)
+{
+    QStyleOption opt;
+    opt.initFrom(this);
+    QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+}
+
+void FluDisplayBox::onThemeChanged()
+{
+    if (FluThemeUtils::isLightTheme())
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDisplayBox.qss", this);
+    }
+    else
+    {
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluDisplayBox.qss", this);
+    }
+}

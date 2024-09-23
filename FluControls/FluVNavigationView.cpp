@@ -41,13 +41,18 @@ FluVNavigationView::FluVNavigationView(QWidget *parent /*= nullptr*/) : FluWidge
     auto searchItem = new FluVNavigationSearchItem;
     // m_vTopWrapLayout->addWidget(searchItem);
 
-    QString qss = FluStyleSheetUitls::getQssByFileName("/resources/qss/light/FluVNavigationView.qss");
-    setStyleSheet(qss);
+    //QString qss = FluStyleSheetUitls::getQssByFileName("../StyleSheet/light/FluVNavigationView.qss");
+    //setStyleSheet(qss);
 
     m_bLong = true;
-    setFixedWidth(220 + 10);
+    setFixedWidth(320 + 20);
+
+    //onThemeChanged();
     connect(menuButtonItem, &FluVNavigationMenuItem::menuItemClicked, [=]() { onMenuItemClicked(); });
     connect(searchItem, &FluVNavigationSearchItem::itemClicked, [=]() { onMenuItemClicked(); });
+
+   // style()->polish(this);
+    onThemeChanged();
 }
 
 void FluVNavigationView::addItemToTopLayout(QWidget *item)
@@ -235,7 +240,7 @@ void FluVNavigationView::onMenuItemClicked()
 
         setFixedWidth(48);
         m_bLong = false;
-        m_midVScrollView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        // m_midVScrollView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     }
     else
     {
@@ -277,8 +282,26 @@ void FluVNavigationView::onMenuItemClicked()
             }
         }
 
+<<<<<<< HEAD
         m_midVScrollView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         setFixedWidth(220 + 10);
+=======
+        //   m_midVScrollView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        setFixedWidth(320 + 20);
+>>>>>>> c0a21e997e3b0839dd1ba1868d7af8e1a9d6eece
         m_bLong = true;
+    }
+}
+
+void FluVNavigationView::onThemeChanged()
+{
+    // LOG_DEBUG << "called";
+    if (FluThemeUtils::isLightTheme())
+    {
+        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVNavigationView.qss", this);
+    }
+    else
+    {
+        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluVNavigationView.qss", this);
     }
 }

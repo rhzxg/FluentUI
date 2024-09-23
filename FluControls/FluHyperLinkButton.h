@@ -10,23 +10,10 @@ class FluHyperLinkButton : public QPushButton
   public:
     FluHyperLinkButton(QString linkUrl, QWidget* parent = nullptr);
 
-    void setLinkUrl(QString linkUrl)
-    {
-        m_linkUrl = linkUrl;
-    }
+    void setLinkUrl(QString linkUrl);
 
   public slots:
-    void onThemeChanged()
-    {
-        if (FluThemeUtils::isLightTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluHyperLinkButton.qss", this);
-        }
-        else
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluHyperLinkButton.qss", this);
-        }
-    }
+    void onThemeChanged();
 
   protected:
     QString m_linkUrl;

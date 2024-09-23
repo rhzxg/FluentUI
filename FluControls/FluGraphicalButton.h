@@ -8,26 +8,8 @@ class FluGraphicalButton : public QPushButton
 {
     Q_OBJECT
   public:
-    FluGraphicalButton(QWidget* parent = nullptr) : QPushButton(parent)
-    {
-        setFixedSize(50, 50);
-        setIconSize(QSize(28, 28));
-        // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluGraphicalButton.qss", this);
-
-        onThemeChanged();
-        connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
-    }
+    FluGraphicalButton(QWidget* parent = nullptr);
 
   public slots:
-    void onThemeChanged()
-    {
-        if (FluThemeUtils::isLightTheme())
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluGraphicalButton.qss", this);
-        }
-        else
-        {
-            FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluGraphicalButton.qss", this);
-        }
-    }
+    void onThemeChanged();
 };
