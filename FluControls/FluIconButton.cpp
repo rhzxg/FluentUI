@@ -1,18 +1,20 @@
 #include "FluIconButton.h"
 
-FluIconButton::FluIconButton(QWidget* parent /*= nullptr*/) : QPushButton(parent), m_type1(FluAwesomeType::None), m_type2(FluAwesomeType::None), m_type(FluAwesomeType::None)
+FluIconButton::FluIconButton(QWidget* parent /*= nullptr*/)
+    : QPushButton(parent), m_type1(FluAwesomeType::None), m_type2(FluAwesomeType::None), m_type(FluAwesomeType::None)
 {
     // set fixed size
     setFixedSize(30, 30);
     setIconSize(QSize(20, 20));
     setNoBorder(false);
 
-    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluIconButton.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluIconButton.qss", this);
     onThemeChanged();
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
 }
 
-FluIconButton::FluIconButton(FluAwesomeType type1, QWidget* parent /*= nullptr*/) : QPushButton(parent)
+FluIconButton::FluIconButton(FluAwesomeType type1, QWidget* parent /*= nullptr*/)
+    : QPushButton(parent)
 {
     setFixedSize(30, 30);
     setIconSize(QSize(20, 20));
@@ -22,12 +24,13 @@ FluIconButton::FluIconButton(FluAwesomeType type1, QWidget* parent /*= nullptr*/
 
     m_type1 = type1;
     setType(type1);
-    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluIconButton.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluIconButton.qss", this);
     onThemeChanged();
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
 }
 
-FluIconButton::FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget* parent /*= nullptr*/) : QPushButton(parent), m_type1(type1), m_type2(type2), m_type(FluAwesomeType::None)
+FluIconButton::FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget* parent /*= nullptr*/)
+    : QPushButton(parent), m_type1(type1), m_type2(type2), m_type(FluAwesomeType::None)
 {
     setFixedSize(30, 30);
     setIconSize(QSize(20, 20));
@@ -36,10 +39,10 @@ FluIconButton::FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget
     // please ensure type1 will in FluAwesomeType, if can't suitable may crash.
 
     QPixmap pixmap = FluIconUtils::getFluentIconPixmap(type1, m_penColor);
-    pixmap = pixmap.scaled(20, 20, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    pixmap         = pixmap.scaled(20, 20, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     setIcon(QIcon(pixmap));
 
-    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluIconButton.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluIconButton.qss", this);
     onThemeChanged();
 
     // can change type1 to type2, type2 auto change to type1
@@ -60,9 +63,9 @@ FluIconButton::FluIconButton(FluAwesomeType type1, FluAwesomeType type2, QWidget
 
 void FluIconButton::setType(FluAwesomeType type)
 {
-    m_type = type;
+    m_type         = type;
     QPixmap pixmap = FluIconUtils::getFluentIconPixmap(type, m_penColor);
-    pixmap = pixmap.scaled(20, 20, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    pixmap         = pixmap.scaled(20, 20, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     setIcon(QIcon(pixmap));
 }
 

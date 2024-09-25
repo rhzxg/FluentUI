@@ -137,10 +137,10 @@ void FluCalendarSelectMonthView::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarSelectMonthView.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarSelectMonthView.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluCalendarSelectMonthView.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarSelectMonthView.qss", this);
     }
 }

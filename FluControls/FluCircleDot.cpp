@@ -2,7 +2,7 @@
 
 FluCircleDot::FluCircleDot(QWidget* parent /*= nullptr*/) : FluWidget(parent)
 {
-    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluInfoBadge.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluInfoBadge.qss", this);
 
     setFixedSize(11, 11);
     onThemeChanged();
@@ -64,10 +64,10 @@ void FluCircleDot::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCircleDot.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCircleDot.qss", this);
     }
     else if (FluThemeUtils::isDarkTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluCircleDot.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCircleDot.qss", this);
     }
 }

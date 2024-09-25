@@ -16,3 +16,7 @@ class FluFWScrollView : public FluScrollArea
   public slots:
     void onThemeChanged();
 
+  protected:
+    QWidget*       m_contextWidget;
+    FluFlowLayout* m_vMainLayout;
+};

@@ -24,10 +24,10 @@ FluVFlyout::FluVFlyout(QWidget* target, FluFlyoutPosition position /*= FluFlyout
 
     setAttribute(Qt::WA_TranslucentBackground);
     setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
-    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVFlyout.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVFlyout.qss", this);
     // if (FluThemeUtils::isDarkTheme())
     // {
-    //     FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluVFlyout.qss", this);
+    //     FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluVFlyout.qss", this);
     // }
 
     onThemeChanged();
@@ -103,10 +103,10 @@ void FluVFlyout::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVFlyout.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVFlyout.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluVFlyout.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluVFlyout.qss", this);
     }
 }

@@ -245,11 +245,11 @@ void FluCalendarMonthView::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCalendarMonthView.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCalendarMonthView.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluCalendarMonthView.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCalendarMonthView.qss", this);
     }
 }
 

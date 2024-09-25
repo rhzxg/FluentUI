@@ -7,17 +7,17 @@ FluComboBox::FluComboBox(QWidget* parent /*= nullptr*/) : QComboBox(parent)
     setView(new QListView());
     view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
     view()->window()->setAttribute(Qt::WA_TranslucentBackground);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluComboBox.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluComboBox.qss", this);
 }
 
 void FluComboBox::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluComboBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluComboBox.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluComboBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluComboBox.qss", this);
     }
 }

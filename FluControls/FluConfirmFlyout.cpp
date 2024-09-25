@@ -64,10 +64,10 @@ void FluConfirmFlyout::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluConfirmFlyout.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluConfirmFlyout.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluConfirmFlyout.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluConfirmFlyout.qss", this);
     }
 }

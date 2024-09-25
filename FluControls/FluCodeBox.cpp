@@ -8,7 +8,7 @@ FluCodeBox::FluCodeBox(QWidget* parent /*= nullptr*/) : QTextEdit(parent)
     setFocusPolicy(Qt::FocusPolicy::NoFocus);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCodeBox.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCodeBox.qss", this);
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
 }
 
@@ -28,10 +28,10 @@ void FluCodeBox::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluCodeBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluCodeBox.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluCodeBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluCodeBox.qss", this);
     }
 }
