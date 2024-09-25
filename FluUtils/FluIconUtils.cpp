@@ -4,6 +4,7 @@
 #include <QPainter>
 #include <QtSvg/QSvgRenderer>
 #include <QApplication>
+#include <QDir>
 
 FluIconUtils::FluIconUtils()
 {

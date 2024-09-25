@@ -23,7 +23,7 @@ FluAppBarButton::FluAppBarButton(FluAwesomeType awesomeType, QWidget* parent /*=
     m_vMainLayout->addWidget(m_textLabel);
 
     m_iconBtn->setIcon(FluIconUtils::getFluentIconPixmap(awesomeType, FluThemeUtils::getUtils()->getTheme()));
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluAppBarButton.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluAppBarButton.qss", this);
 }
 
 void FluAppBarButton::setAwesomeType(FluAwesomeType awesomeType)
@@ -79,11 +79,11 @@ void FluAppBarButton::onThemeChanged()
     if (FluThemeUtils::isLightTheme())
     {
         m_iconBtn->setIcon(FluIconUtils::getFluentIcon(m_awesomeType, FluTheme::Light));
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluAppBarButton.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluAppBarButton.qss", this);
     }
     else
     {
         m_iconBtn->setIcon(FluIconUtils::getFluentIcon(m_awesomeType, FluTheme::Dark));
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluAppBarButton.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluAppBarButton.qss", this);
     }
 }

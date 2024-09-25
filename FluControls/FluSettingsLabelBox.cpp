@@ -28,7 +28,7 @@ FluSettingsLabelBox::FluSettingsLabelBox(QWidget* parent /*= nullptr*/)
     m_mainLayout->addWidget(m_versionLabel);
 
     setFixedHeight(70);
-    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluSettingsLabelBox.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSettingsLabelBox.qss", this);
     onThemeChanged();
 }
 
@@ -60,10 +60,10 @@ void FluSettingsLabelBox::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluSettingsLabelBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluSettingsLabelBox.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluSettingsLabelBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluSettingsLabelBox.qss", this);
     }
 }

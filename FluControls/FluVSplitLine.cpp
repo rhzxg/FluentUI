@@ -3,7 +3,7 @@
 FluVSplitLine::FluVSplitLine(QWidget* parent /*= nullptr*/) : FluWidget(parent)
 {
     setFixedHeight(1);
-    // FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVSplitLine.qss", this);
+    // FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVSplitLine.qss", this);
     onThemeChanged();
 }
 
@@ -19,10 +19,10 @@ void FluVSplitLine::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluVSplitLine.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluVSplitLine.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluVSplitLine.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluVSplitLine.qss", this);
     }
 }

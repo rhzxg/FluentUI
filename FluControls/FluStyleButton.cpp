@@ -11,10 +11,10 @@ void FluStyleButton::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluStyleButton.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluStyleButton.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluStyleButton.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluStyleButton.qss", this);
     }
 }

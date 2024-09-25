@@ -57,7 +57,7 @@ FluDatePicker::FluDatePicker(QWidget* parent /*= nullptr*/) : FluWidget(parent)
         m_yearBtn->setText(sYear);
     });
 
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluDatePicker.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDatePicker.qss", this);
     // connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged,  this, [=](FluTheme theme) { onThemeChanged(); });
 }
 
@@ -78,10 +78,10 @@ void FluDatePicker::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluDatePicker.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluDatePicker.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluDatePicker.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluDatePicker.qss", this);
     }
 }

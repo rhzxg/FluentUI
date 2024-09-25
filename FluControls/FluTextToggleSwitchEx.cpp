@@ -25,9 +25,11 @@ FluTextToggleSwitchEx::FluTextToggleSwitchEx(QWidget* parent /*= nullptr*/) : Fl
         {
             m_textLabel->setText(m_offText);
         }
+        
+        emit stateChanged(bChecked);
     });
 
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTextToggleSwithEx.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextToggleSwithEx.qss", this);
     connect(FluThemeUtils::getUtils(), &FluThemeUtils::themeChanged, this, [=](FluTheme theme) { onThemeChanged(); });
 }
 
@@ -38,14 +40,19 @@ void FluTextToggleSwitchEx::setText(QString onText, QString offText)
     m_offText = offText;
 }
 
+void FluTextToggleSwitchEx::setChecked(bool checked)
+{
+    m_toggleSwithEx->setChecked(checked);
+}
+
 void FluTextToggleSwitchEx::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluTextToggleSwithEx.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluTextToggleSwithEx.qss", this);
     }
     else
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluTextToggleSwithEx.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluTextToggleSwithEx.qss", this);
     }
 }

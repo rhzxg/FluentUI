@@ -70,7 +70,7 @@ FluAutoSuggestBox::FluAutoSuggestBox(QWidget* parent /*= nullptr*/) : FluWidget(
         emit currentIndexChanged(nIndex);
     });
 
-    FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluAutoSuggestBox.qss", this);
+    FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluAutoSuggestBox.qss", this);
 }
 
 void FluAutoSuggestBox::setKeys(std::vector<QString> keys)
@@ -141,10 +141,10 @@ void FluAutoSuggestBox::onThemeChanged()
 {
     if (FluThemeUtils::isLightTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/light/FluAutoSuggestBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluAutoSuggestBox.qss", this);
     }
     else if (FluThemeUtils::isDarkTheme())
     {
-        FluStyleSheetUitls::setQssByFileName("../StyleSheet/dark/FluAutoSuggestBox.qss", this);
+        FluStyleSheetUitls::setQssByFileName("/resources/qss/dark/FluAutoSuggestBox.qss", this);
     }
 }

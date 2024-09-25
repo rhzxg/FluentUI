@@ -162,7 +162,7 @@ QTimer *FluStyleSheetUitls::getTimer()
 void FluStyleSheetUitls::__init()
 {
     getUtils();
-    FluStyleSheetUitls::getUtils()->setStyleSheetDir("../StyleSheet/light/");
+    FluStyleSheetUitls::getUtils()->setStyleSheetDir("/resources/qss/light/");
 }
 
 void FluStyleSheetUitls::__deInit()

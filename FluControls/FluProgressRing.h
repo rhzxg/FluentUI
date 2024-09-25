@@ -22,6 +22,16 @@ class FluProgressRing : public FluWidget
     bool getWorking();
 
     void setWorking(bool bWorking);
+
+    void setShowText(bool bShowText);
+
+    bool getShowText();
+
+    bool getTransparentTrack();
+
+    void setTransparentTrack(bool bTransparentTrack);
+
+  protected:
     int m_minValue;
     int m_maxValue;
     int m_curValue;
