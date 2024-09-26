@@ -2,8 +2,8 @@
 
 FluPushButton::FluPushButton(QWidget *parent /*= nullptr*/) : QPushButton(parent)
 {
-    setFixedSize(200, 30);
-    // setFixedHeight(30);
+    // setFixedSize(200, 30);
+    setMinimumHeight(20);
     FluStyleSheetUitls::setQssByFileName("/resources/qss/light/FluPushButton.qss", this);
     if (FluThemeUtils::isDarkTheme())
     {

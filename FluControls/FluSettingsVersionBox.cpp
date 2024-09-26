@@ -69,7 +69,7 @@ void FluSettingsVersionBox::addWidget(QWidget* widget)
     hLayout->setContentsMargins(50, 0, 10, 0);
 
     hLayout->addWidget(widget);
-    hLayout->addStretch();
+    // hLayout->addStretch();
     getWrap2Layout()->addLayout(hLayout);
 }
 
