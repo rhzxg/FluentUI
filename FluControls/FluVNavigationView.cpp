@@ -45,7 +45,7 @@ FluVNavigationView::FluVNavigationView(QWidget *parent /*= nullptr*/) : FluWidge
     //setStyleSheet(qss);
 
     m_bLong = true;
-    setFixedWidth(320 + 20);
+    setFixedWidth(220 + 10);
 
     //onThemeChanged();
     connect(menuButtonItem, &FluVNavigationMenuItem::menuItemClicked, [=]() { onMenuItemClicked(); });
@@ -282,7 +282,7 @@ void FluVNavigationView::onMenuItemClicked()
             }
         }
 
-        setFixedWidth(320 + 20);
+        setFixedWidth(220 + 10);
         m_bLong = true;
     }
 }
