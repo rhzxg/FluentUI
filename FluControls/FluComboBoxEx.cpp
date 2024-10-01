@@ -1,10 +1,11 @@
 #include "FluComboBoxEx.h"
 
-FluComboBoxEx::FluComboBoxEx(QWidget* parent /*= nullptr*/) : FluWidget(parent)
+FluComboBoxEx::FluComboBoxEx(QWidget* parent /*= nullptr*/)
+    : FluWidget(parent)
 {
     // m_nMaxTextLen = 0;
     m_textAwesomeType = FluAwesomeType::None;
-    m_hMainLayout = new QHBoxLayout;
+    m_hMainLayout     = new QHBoxLayout;
     m_hMainLayout->setContentsMargins(3, 3, 3, 3);
     m_hMainLayout->setSpacing(0);
 
@@ -36,7 +37,7 @@ FluComboBoxEx::FluComboBoxEx(QWidget* parent /*= nullptr*/) : FluWidget(parent)
     connect(m_iconBtn, &QPushButton::clicked, [=](bool b) { emit clicked(); });
     connect(this, &FluComboBoxEx::clicked, [=]() {
         QPoint leftBottomPos = rect().bottomLeft();
-        leftBottomPos = mapToGlobal(leftBottomPos);
+        leftBottomPos        = mapToGlobal(leftBottomPos);
         leftBottomPos.setY(leftBottomPos.y() + 3);
         m_menu->setMinimumWidth(width());
         m_menu->exec(leftBottomPos);
@@ -47,7 +48,7 @@ FluComboBoxEx::FluComboBoxEx(QWidget* parent /*= nullptr*/) : FluWidget(parent)
     connect(m_menu, &FluMenu::triggered, [=](QAction* action) {
         m_textBtn->setText(action->text());
         emit currentTextChanged(action->text());
-        int nIndex = 0;
+        int  nIndex = 0;
         for (auto tmpAct : m_menu->actions())
         {
             if (tmpAct == action)
@@ -76,6 +77,24 @@ void FluComboBoxEx::setIcon(FluAwesomeType type)
     m_textAwesomeType = type;
     m_textBtn->setIconSize(QSize(18, 18));
     m_textBtn->setIcon(FluIconUtils::getFluentIconPixmap(type, FluThemeUtils::getUtils()->getTheme()));
+}
+
+void FluComboBoxEx::setIndex(int index)
+{
+    if (index == -1)
+    {
+        m_textBtn->setText("");
+    }
+
+    if (index >= m_menu->actions().size())
+    {
+        return;
+    }
+
+    auto action = m_menu->actions()[index];
+    m_textBtn->setText(action->text());
+
+    emit currentIndexChanged(index);
 }
 
 void FluComboBoxEx::setText(QString text)
