@@ -81,19 +81,20 @@ void FluComboBoxEx::setIcon(FluAwesomeType type)
 
 void FluComboBoxEx::setIndex(int index)
 {
-    if (index == -1)
-    {
-        m_textBtn->setText("");
-    }
-
-    if (index >= m_menu->actions().size())
+    if (index < -1 || index >= m_menu->actions().size())
     {
         return;
     }
 
-    auto action = m_menu->actions()[index];
-    m_textBtn->setText(action->text());
+    QString text = "";
+    if (index != -1)
+    {
+        auto action = m_menu->actions()[index];
+        text        = action->text();
+    }
 
+    m_textBtn->setText(text);
+    emit currentTextChanged(text);
     emit currentIndexChanged(index);
 }
 
